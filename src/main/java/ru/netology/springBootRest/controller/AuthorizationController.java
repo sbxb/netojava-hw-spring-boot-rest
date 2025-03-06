@@ -1,7 +1,6 @@
 package ru.netology.springBootRest.controller;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +15,15 @@ import java.util.List;
 
 @RestController
 public class AuthorizationController {
-    private AuthorizationService service;
+    private final AuthorizationService service;
 
     public AuthorizationController(AuthorizationService service) {
         this.service = service;
     }
 
     @GetMapping("/authorize")
-    public List<Authorities> getAuthorities(@RequestParam("user") String user, @RequestParam("password") String password) {
+    public List<Authorities> getAuthorities(@RequestParam("user") String user, @RequestParam(
+            "password") String password) {
         return service.getAuthorities(user, password);
     }
 
