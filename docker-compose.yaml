@@ -1,0 +1,6 @@
+services:
+  spring-boot-rest:
+    build: .
+    ports:
+      - "8080:8080"
+    restart: on-failure
